@@ -1,0 +1,11 @@
+*.iml
+.idea/
+node_modules/
+
+es/
+lib/
+dist/
+build/
+package-*.json
+bak/
+#examples/
