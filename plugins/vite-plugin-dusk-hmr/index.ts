@@ -19,24 +19,13 @@ export default function createViteDuskHmr(): PluginOption {
                     code: `
 ${code}
 
-// if (import.meta.hot) {
-//     const params = new URLSearchParams(import.meta.url);
-//     if(!params.get('v')){
-//         import.meta.hot.accept((module) => {
-//             const app = __DUSK_PLUGIN_VITE_HMR_APP_RUNTIME__;
-//             if (app) {
-//                 app._mm.remove(module.default.namespace);
-//                 app.define(module.default);
-//             }
-//         });
-//     }
-// }
-
 if (import.meta.hot) {
-    if (import.meta.url.search(/v=/) < 0) {
+    const params = new URL(import.meta.url).searchParams;
+    if (!params.has('v')) {
         import.meta.hot.accept((module) => {
             const app = window.__DUSK_PLUGIN_VITE_HMR_APP_RUNTIME__;
             if (app) {
+                // console.log(module?.default.namespace);
                 app._mm.remove(module?.default.namespace);
                 app.define(module?.default);
             }

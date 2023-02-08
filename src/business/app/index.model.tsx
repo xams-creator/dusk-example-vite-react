@@ -3,12 +3,12 @@ import { createDuskModel } from '@xams-framework/dusk';
 const model = createDuskModel({
     namespace: 'app',
     initialState: {
-        value: 1,
+        value: 11,
         loading: false,
     },
     reducers: {
         add(state: any) {
-            state.value += 12;
+            state.value += 5;
         },
         minus(state: any) {
             state.value -= 1;
