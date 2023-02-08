@@ -8,7 +8,7 @@ const model = createDuskModel({
     },
     reducers: {
         add(state: any) {
-            state.value += 1;
+            state.value += 21;
         },
         minus(state: any) {
             state.value -= 1;
@@ -28,5 +28,3 @@ const model = createDuskModel({
 });
 
 export default model;
-
-console.log('dashboard');

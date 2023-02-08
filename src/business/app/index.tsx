@@ -6,6 +6,7 @@ export default function App() {
     const state: any = useNamespacedSelector(model.namespace);
     const dispatch = useDispatch();
     console.log(state);
+
     return (
         <div className={'app'}>
             <button

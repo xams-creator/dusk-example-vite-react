@@ -1,6 +1,8 @@
 import { createApp } from '@xams-framework/dusk';
-import App from './business/app';
 import createDuskVite from '@xams-framework/dusk-plugin-vite';
+
+import App from './business/app';
+import createDuskAppInitializer from './configuration/plugins/dusk-plugin-app-initializer';
 
 const app = createApp({
     container: '#root',
@@ -12,8 +14,6 @@ const app = createApp({
 });
 
 app
+    .use(createDuskAppInitializer())
     .use(createDuskVite())
     .startup(<App />);
-
-window.app = app;
-
