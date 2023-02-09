@@ -17,3 +17,5 @@ app
     .use(createDuskAppInitializer())
     .use(createDuskVite())
     .startup(<App />);
+
+window.app = app;
