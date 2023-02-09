@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import * as path from 'path';
-import createViteDuskHmr from './plugins/vite-plugin-dusk-hmr';
+import { createViteDuskHMR } from '@xams-framework/vite-plugin-dusk';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
         },
         plugins: [
             react(),
-            createViteDuskHmr(),
+            createViteDuskHMR(),
         ],
         envPrefix: ['VITE_', 'REACT_APP'],
         define: {
