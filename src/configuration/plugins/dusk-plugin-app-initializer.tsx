@@ -1,4 +1,4 @@
-import Dusk, { DUSK_APP, DuskApplication, PluginFunction } from '@xams-framework/dusk';
+import { PluginFunction } from '@xams-framework/dusk';
 
 export default function createDuskAppInitializer(): PluginFunction {
     return (app) => {

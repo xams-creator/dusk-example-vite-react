@@ -1,12 +1,12 @@
 import { useDispatch, useNamespacedSelector } from '@xams-framework/dusk';
 import model from './index.model';
 import './index.scss';
+import { useLoading } from '@xams-framework/dusk-plugin-loading';
 
 export default function App() {
     const state: any = useNamespacedSelector(model.namespace);
     const dispatch = useDispatch();
-    console.log(state);
-
+    const [loading] = useLoading();
     return (
         <div className={'app'}>
             <button
@@ -30,7 +30,7 @@ export default function App() {
             <hr />
 
             <button
-                disabled={state.loading}
+                disabled={loading}
                 onClick={() => {
                     dispatch(model.commands.add());
                 }}

@@ -2,14 +2,20 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import * as path from 'path';
 import { createViteDuskHMR } from '@xams-framework/vite-plugin-dusk';
+import postcss from 'postcss-preset-env';
+import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
     // const env = loadEnv(mode, process.cwd(), '');
-
     return {
         server: {
             port: 1339,
+        },
+        css: {
+            postcss: {
+                plugins: [postcss()],
+            },
         },
         resolve: {
             alias: {
@@ -30,6 +36,8 @@ export default defineConfig(({ mode }) => {
         plugins: [
             react(),
             createViteDuskHMR(),
+            eslint(),
+            // viteCommonjs(),
         ],
         envPrefix: ['VITE_', 'REACT_APP'],
         define: {
