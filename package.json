@@ -10,8 +10,9 @@
     },
     "dependencies": {
         "@xams-framework/common": "^0.0.3",
-        "@xams-framework/dusk": "^1.0.12",
+        "@xams-framework/dusk": "^1.0.15",
         "@xams-framework/dusk-plugin-vite": "^1.0.3",
+        "@xams-framework/dusk-plugin-hmr": "^1.1.1",
         "@xams-framework/dusk-plugin-loading": "^1.0.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

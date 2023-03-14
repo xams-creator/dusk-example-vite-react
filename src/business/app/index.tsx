@@ -1,14 +1,23 @@
-import { useDispatch, useNamespacedSelector } from '@xams-framework/dusk';
+import { useDispatch, useNamespacedSelector, useReactive } from '@xams-framework/dusk';
 import model from './index.model';
 import './index.scss';
-import { useLoading } from '@xams-framework/dusk-plugin-loading';
+import React, { useEffect, useState } from 'react';
 
 export default function App() {
-    const state: any = useNamespacedSelector(model.namespace);
-    const dispatch = useDispatch();
-    const [loading] = useLoading();
     return (
         <div className={'app'}>
+            <Home />
+            <Child />
+        </div>
+    );
+}
+
+function Home() {
+    const state: any = useNamespacedSelector(model.namespace);
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
+    return (
+        <>
             <button
                 onClick={() => {
                     dispatch(model.actions.add());
@@ -32,11 +41,25 @@ export default function App() {
             <button
                 disabled={loading}
                 onClick={() => {
-                    dispatch(model.commands.add());
+                    setLoading(true);
+                    dispatch(model.commands.add())
+                        .finally(() => {
+                            setLoading(false);
+                        });
                 }}
             >
                 async add
             </button>
-        </div>
+        </>
+    );
+}
+
+function Child() {
+    useEffect(() => {
+        console.log('child');
+    }, []);
+    console.log('child console');
+    return (
+        <div>child</div>
     );
 }

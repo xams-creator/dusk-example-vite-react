@@ -3,11 +3,11 @@ import { createDuskModel } from '@xams-framework/dusk';
 const model = createDuskModel({
     namespace: 'app',
     initialState: {
-        value: 0,
+        value: 1,
     },
     reducers: {
         add(state) {
-            state.value += 1;
+            state.value += 11;
         },
         minus(state) {
             state.value -= 1;
@@ -16,9 +16,10 @@ const model = createDuskModel({
     effects: {
         async add(dispatch, state, action, { sleep, put }) {
             await sleep(1000);
-            put()
+            put();
         },
     },
 });
 
 export default model;
+
