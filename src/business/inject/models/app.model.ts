@@ -16,10 +16,10 @@ const model = createDuskModel({
     effects: {
         async add(dispatch, state, action, { sleep, put }) {
             await sleep(1000);
+            console.log('add 60')
             put();
         },
     },
 });
 
 export default model;
-

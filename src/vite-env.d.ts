@@ -7,5 +7,6 @@ declare global {
         [index: string]: any;
 
         app: DuskApplication;
+
     }
 }

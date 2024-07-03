@@ -1,14 +1,14 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import * as path from 'path';
+import react from '@vitejs/plugin-react';
 import createViteDusk from '@xams-framework/vite-plugin-dusk';
+import { URL, fileURLToPath } from 'node:url';
 import postcss from 'postcss-preset-env';
+import { defineConfig, loadEnv } from 'vite';
 import eslint from 'vite-plugin-eslint';
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-    // const env = loadEnv(mode, process.cwd(), '');
+    const env = loadEnv(mode, process.cwd());
     return {
+        base: env.VITE_APP_BASE_URL,
         server: {
             port: 1339,
         },
@@ -19,19 +19,9 @@ export default defineConfig(({ mode }) => {
         },
         resolve: {
             alias: {
-                '@': path.join(__dirname, 'src'),
-                'src': path.join(__dirname, 'src'),
+                '@': fileURLToPath(new URL('./src', import.meta.url)),
+                src: fileURLToPath(new URL('./src', import.meta.url)),
             },
-            // alias: [
-            //     {
-            //         find: '@',
-            //         replacement: path.resolve(__dirname, 'src'),
-            //     },
-            //     {
-            //         find: 'src',
-            //         replacement: path.resolve(__dirname, 'src'),
-            //     },
-            // ],
         },
         plugins: [
             react(),
@@ -45,6 +35,3 @@ export default defineConfig(({ mode }) => {
         },
     };
 });
-
-
-

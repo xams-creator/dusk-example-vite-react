@@ -13,11 +13,5 @@ export default function createDuskAppInitializer(): PluginFunction {
                 .use(createDuskLoading())
             ;
         },
-        // 修改 index.model.tsx 触发
-        onHmr(ctx, next) {
-            console.log('onHmr start...');
-            next();
-            console.log('onHmr end...');
-        },
     });
 }
