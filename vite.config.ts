@@ -7,7 +7,7 @@ import eslint from 'vite-plugin-eslint';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd());
-    return {
+    return defineConfig({
         base: env.VITE_APP_BASE_URL,
         server: {
             port: 1339,
@@ -16,6 +16,9 @@ export default defineConfig(({ mode }) => {
             postcss: {
                 plugins: [postcss()],
             },
+        },
+        build: {
+            outDir: 'build',
         },
         resolve: {
             alias: {
@@ -33,5 +36,5 @@ export default defineConfig(({ mode }) => {
         define: {
             // __APP_VERSION__: 1,  // 这将把代码里的 __APP_VERSION__ 替换成 1
         },
-    };
+    });
 });
